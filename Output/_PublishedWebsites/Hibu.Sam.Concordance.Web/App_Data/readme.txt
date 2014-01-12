@@ -1,1 +1,0 @@
-This folder will be used for uploading temp data. Temp data will be deleted by app 
