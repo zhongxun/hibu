@@ -1,4 +1,1 @@
-hibu
-====
-
-Exercise project
+Please refer documents under Docs folder

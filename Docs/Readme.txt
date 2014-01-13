@@ -1,26 +1,36 @@
-﻿Hi Marc,
+﻿Build
+================================================================================
+Request: A Windows system has VS2010 being installed. 
+1. Double click build.release.bat will started to use MSBUILD to compile 
+solution and generate all assemlies, executeable and package under ./Output
+folder.
+2. Or you can open Hibu.Sam.Concordance.sln file using VS2010 and build each 
+project with different configuration as needed.
 
-It was nice talking with you. 
+Folder structure as below
+================================================================================
+|+Data - Testing data
+|+Docs - Instruction documents
+|+Hibu.Sam.Concordance.Client - Command line client tool project which can be 
+	used to post a file to RESTful interface and display returned JSON data
+|+Hibu.Sam.Concordance.Models - Common data model classes project
+|+Hibu.Sam.Concordance.Parsers - Parser class proejct which takes filestream as 
+	input and return extracted sentence and word information
+|+Hibu.Sam.Concordance.Utilities - Common utilites and helper class project
+|+Hibu.Sam.Concordance.Web - Web application project which exposes a concordance
+	generator interface and a web page for submitting file to this interface
+|+Hibu.Sam.Concordance.WebApiServer - Self-host web api project which exposes a 
+	concordance generator interface 
+|+Output - Folder contains compiled output when using build script
+|+packages - 3rd part NUGet packages
 
-I need clarification on definition of splitting sentence. Before get your answer, I would use following assumption for extracting sentence and word:
-•	Collection of words and punctuation, after last splitter or begin of paragraph to another splitter or end of paragraph, would be considered as a sentence.
-•	Following punctuation characters in red would be used as splitter: “.”, “?”, “!”
-•	There would be a dictionary to exclude some abbreviation contains splitter character as end of a sentence. For example: Mr., Mrs., Dr., P.S. and so on.
-•	In sentence,  “-“ and “_” would be treated as space.
-•	“\r\n\r\n”, “\r\r” or end of file would be considered as end of paragraph. 
-•	All words will be lowercase.
-
-
-
-I don't have local IIS environment.
-
-IIS, 
-Create a App_Data folder under the site to keep uploaded files
-Update application pool to use .net 4.0
-Must be a sperated site. Need to udpate route path (or action path in view) if install it as an app under existing site
-
-
-Extra sentence and word are most different part for this project. I seperated them in one assembly, so that they can be enhanced and tested seperately
-
-Thanks,
-Sam
+Files under root folder
+================================================================================
+./Hibu.Sam.Concordance.sln - VS2010 solution file contains all sub projects
+./build.cleanup.bat - Script for cleanup compiled output under each proejcts for 
+	Debug and Release configuration
+./build.release.bat - Script for compile self-host web api server, command line 
+	client tool, and web applicaiton package. Compiled result will be under
+	Output folder
+./solution cleanup.bat - Script for cleanup all Bin, Obj, Output subfolders
+./web.deploy.ps1 - PowerShell script for deploying web application
